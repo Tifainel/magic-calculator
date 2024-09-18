@@ -1,7 +1,11 @@
 <template>
-  <div id="app" class="h-screen" :class="{ dark: darkMode }">
+  <div
+    id="app"
+    class="sm:h-screen overflow-hidden overscroll-none"
+    :class="{ dark: darkMode }"
+  >
     <div
-      class="bg-taupe-gray dark:bg-slate-900 h-screen py-[80px] px-[50px] relative"
+      class="bg-taupe-gray dark:bg-slate-900 sm:h-screen h-svh sm:py-[80px] sm:px-[50px] p-[20px] relative"
     >
       <div
         class="absolute bottom-[-250px] left-[-150px] block blur-lg h-[660px] w-[660px] overflow-hidden rounded-full transition-all duration-500 bg-gradient-to-tr from-pink-300 via-orange-200 to-violet-300 dark:from-indigo-600 from-300% dark:via-cyan-300 via-50% dark:to-violet-300 to-80% z-0"
@@ -21,9 +25,9 @@
             "
           />
         </div>
-        <div class="h-full flex justify-center mt-[150px]">
+        <div class="sm:h-full flex justify-center sm:mt-[150px] mt-[120px]">
           <div
-            class="text-blue-950 dark:text-white text-[60px] font-semibold flex flex-col items-center"
+            class="text-blue-950 dark:text-white sm:text-[60px] text-3xl text-center font-semibold flex flex-col items-center w-full"
           >
             {{ calculToDisplay }}
             <div class="flex w-full justify-center mt-8">
@@ -33,6 +37,7 @@
               >
                 <input
                   v-model="nbInput"
+                  inputmode="numeric"
                   type="number"
                   name="answer"
                   id="answer"
@@ -114,6 +119,7 @@ function generateCalcul() {
 }
 
 function newCalcul() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   nbInput.value = null;
   submitButtonClicked.value = false;
   generateCalcul();
